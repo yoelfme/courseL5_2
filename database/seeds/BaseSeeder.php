@@ -15,33 +15,34 @@ abstract class BaseSeeder extends Seeder
         $this->createMultiple($this->total);
     }
 
-	abstract public function getModel();
-	abstract public function getDummyData(Generator $faker, array $customValues = array());
+    abstract public function getModel();
+    abstract public function getDummyData(Generator $faker, array $customValues = array());
 
-	protected function createMultiple($total, array $customValues = array())
-	{
-		for ($i=0; $i < $total; $i++) { 
-			$this->create($customValues);
-		}
-	}
+    protected function createMultiple($total, array $customValues = array())
+    {
+        for ($i = 0; $i < $total; $i++) {
+            $this->create($customValues);
+        }
+    }
 
-	protected function create(array $customValues = array())
-	{
+    protected function create(array $customValues = array())
+    {
         $values = $this->getDummyData(Faker::create(), $customValues);
         $values = array_merge($values, $customValues);
 
         return $this->addToPool($this->getModel()->create($values));
-	}
+    }
 
     protected function createFrom($seeder, array $customValues = array())
     {
-        $seeder = new $seeder;
+        $seeder = new $seeder();
+
         return $seeder->create($customValues);
     }
 
     protected function getRandom($model)
     {
-        if(! $this->collectionExists($model)) {
+        if (!$this->collectionExists($model)) {
             throw new Exception("The $model collection does not exist");
         }
 
@@ -53,8 +54,7 @@ abstract class BaseSeeder extends Seeder
         $reflection = new ReflectionClass($entity);
         $class = $reflection->getShortName();
 
-        if(! $this->collectionExists($class))
-        {
+        if (!$this->collectionExists($class)) {
             static::$pool[$class] = new Collection();
         }
 
@@ -67,6 +67,4 @@ abstract class BaseSeeder extends Seeder
     {
         return isset(static::$pool[$class]);
     }
-
-
 }
