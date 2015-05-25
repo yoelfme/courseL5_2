@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TeachMe by duilio.me</title>
 
-    <link href="http://teachme.static/assets/css/style.css" rel="stylesheet">
+    <link href="http://teachme.app/assets/css/style.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:300,700' rel='stylesheet' type='text/css'>
