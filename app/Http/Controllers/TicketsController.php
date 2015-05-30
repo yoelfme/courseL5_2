@@ -1,6 +1,7 @@
 <?php namespace TeachMe\Http\Controllers;
 
 use TeachMe\Entities\Ticket;
+use TeachMe\Entities\TicketComment;
 use TeachMe\Http\Requests;
 use TeachMe\Http\Controllers\Controller;
 
@@ -36,7 +37,7 @@ class TicketsController extends Controller {
     {
         $ticket = Ticket::findOrFail($id);
 
-        return view('tickets/detail', compact('ticket'));
+        return view('tickets/detail', compact('ticket', 'comments'));
     }
 
 }
