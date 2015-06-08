@@ -42,7 +42,7 @@ class TicketsController extends Controller {
 
     public function create()
     {
-        return '[Formulario de solicitud]';
+        return view('tickets.create');
     }
 
 }

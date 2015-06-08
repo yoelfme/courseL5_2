@@ -43,4 +43,9 @@ Route::group(['middleware' => 'auth'], function(){
         'uses' => 'TicketsController@create'
     ]);
 
+    Route::post('/solicitar', [
+        'as' => 'tickets.store',
+        'uses' => 'TicketsController@create'
+    ]);
+
 });
