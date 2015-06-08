@@ -45,4 +45,8 @@ class TicketsController extends Controller {
         return view('tickets.create');
     }
 
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }
